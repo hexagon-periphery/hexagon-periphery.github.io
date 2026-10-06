@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="The Hexagon: commentary on the states at Europe's edges, where accession, security and identity are still being decided.">
+<meta name="robots" content="noindex, nofollow">
+<title>The Hexagon — European Periphery, in View</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='6.0,63.8 19.7,34.9 57.5,23.2 94.0,54.3 79.9,74.2 45.8,76.8' fill='none' stroke='%234A90D9' stroke-width='6' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void: #070A10;
+    --panel: #0D131C;
+    --panel-line: #1B2838;
+    --blue-deep: #1C3D5A;
+    --blue: #4A90D9;
+    --blue-soft: #8FB8E0;
+    --gold: #C9A66B;
+    --ink: #E9EEF3;
+    --ink-muted: #8FA0B3;
+    --ink-faint: #5B6B7D;
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans: 'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
+    --mono: 'IBM Plex Mono', 'Courier New', monospace;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  * { box-sizing: inherit; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(76px + env(safe-area-inset-top, 0px)); }
+  body {
+    margin: 0;
+    background: var(--void);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* faint ambient grid, evoking a chart table */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(var(--panel-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--panel-line) 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity: 0.12;
+  }
+
+  a { color: var(--blue-soft); text-decoration-color: var(--blue-deep); text-underline-offset: 3px; }
+  a:hover { color: var(--blue); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+  /* ---------- NAV ---------- */
+  nav.topbar {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: rgba(7, 10, 16, 0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--panel-line);
+  }
+  nav.topbar .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+  .brand svg { width: 30px; height: 20px; flex-shrink: 0; }
+  .navlinks { display: flex; gap: 28px; font-size: 0.92rem; }
+  .navlinks a { color: var(--ink-muted); text-decoration: none; }
+  .navlinks a:hover { color: var(--ink); }
+  .navtoggle { display: none; background: none; border: 1px solid var(--panel-line); color: var(--ink); width: 40px; height: 40px; border-radius: 4px; cursor: pointer; }
+
+  @media (max-width: 680px) {
+    .navlinks {
+      position: absolute;
+      top: 64px; left: 0; right: 0;
+      flex-direction: column;
+      background: var(--void);
+      border-bottom: 1px solid var(--panel-line);
+      padding: 8px 28px 20px;
+      gap: 14px;
+      display: none;
+    }
+    .navlinks.open { display: flex; }
+    .navtoggle { display: block; }
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero { padding: 76px 0 40px; text-align: center; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--gold);
+    letter-spacing: 0.14em;
+    margin: 0 0 18px;
+  }
+  h1.title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    line-height: 1.05;
+    margin: 0 0 20px;
+    color: var(--ink);
+  }
+  .tagline {
+    font-size: 1.1rem;
+    color: var(--ink-muted);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ---------- HEXAGON DIAGRAM ---------- */
+  .diagram-stage {
+    margin: 56px auto 24px;
+    max-width: 620px;
+    position: relative;
+  }
+  .diagram-stage svg { width: 100%; height: auto; display: block; }
+  .vx-dot { fill: var(--void); stroke: var(--gold); stroke-width: 2.5; }
+  .vx-dot.active { fill: var(--gold); }
+  .vx-ring { fill: none; stroke: var(--blue-deep); stroke-width: 1; stroke-dasharray: 2 4; }
+  .hex-outline { fill: none; stroke: var(--blue); stroke-width: 1.4; }
+  .hex-fill { fill: url(#hexGradient); opacity: 0.5; }
+  .vx-label {
+    font-family: var(--sans);
+    font-size: 13.5px;
+    font-weight: 500;
+    fill: var(--ink);
+  }
+  .vx-coord {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    fill: var(--ink-faint);
+  }
+  .vx-line { stroke: var(--panel-line); stroke-width: 1; }
+
+  .diagram-caption {
+    text-align: center;
+    color: var(--ink-faint);
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section { padding: 84px 0; border-top: 1px solid var(--panel-line); }
+  section:first-of-type { border-top: none; }
+  .section-head {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .section-head { grid-template-columns: 1fr; gap: 18px; }
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    padding-top: 6px;
+  }
+  .section-body h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.9rem;
+    margin: 0 0 22px;
+    color: var(--ink);
+  }
+  .prose { max-width: 62ch; color: var(--ink-muted); }
+  .prose p { margin: 0 0 18px; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: var(--ink); font-weight: 500; }
+
+  /* ---------- ARTICLES ---------- */
+  .article-list { display: flex; flex-direction: column; max-width: 68ch; }
+  .article-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--panel-line);
+    align-items: start;
+  }
+  .article-row:first-child { padding-top: 0; }
+  .article-row:last-child { border-bottom: none; }
+  .article-title {
+    font-family: var(--serif);
+    font-size: 1.18rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .article-title a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--blue-deep); }
+  .article-title a:hover { border-bottom-color: var(--blue); color: var(--blue-soft); }
+  .article-dek { color: var(--ink-muted); font-size: 0.95rem; max-width: 52ch; }
+  .article-meta {
+    text-align: right;
+    white-space: nowrap;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    padding-top: 4px;
+  }
+  .status-pill {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+  }
+  .status-pill.live { color: var(--gold); border: 1px solid var(--blue-deep); }
+  .status-pill.pending { color: var(--ink-faint); border: 1px solid var(--panel-line); }
+
+  /* ---------- FOOTER ---------- */
+  footer { padding: 54px 0 calc(54px + env(safe-area-inset-bottom, 0px)); }
+  footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: var(--ink-faint);
+    font-size: 0.85rem;
+  }
+  footer .flinks { display: flex; gap: 22px; }
+  footer a { color: var(--ink-muted); text-decoration: none; }
+  footer a:hover { color: var(--blue-soft); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .vx-dot, .hex-outline, .hex-fill { transition: all 0.6s ease; }
+  }
+
+  /* ---------- ARTICLE PAGE VIEW ---------- */
+  .article-page { padding: 56px 0 100px; }
+  .article-wrap { max-width: 740px; }
+  .back-link { display: inline-block; color: var(--ink-muted); font-size: 0.9rem; text-decoration: none; margin-bottom: 36px; }
+  .back-link:hover { color: var(--blue-soft); }
+  .kicker { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); letter-spacing: 0.08em; margin: 0 0 18px; }
+  .article-h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.9rem, 4.5vw, 2.6rem); line-height: 1.15; margin: 0 0 20px; color: var(--ink); }
+  .article-pagemeta { display: flex; gap: 16px; flex-wrap: wrap; color: var(--ink-faint); font-family: var(--mono); font-size: 0.78rem; margin-bottom: 44px; padding-bottom: 28px; border-bottom: 1px solid var(--panel-line); }
+  .lede { font-size: 1.15rem; color: var(--ink-muted); margin-bottom: 8px; line-height: 1.6; }
+  .article-page h2 { font-family: var(--serif); font-weight: 500; font-size: 1.4rem; color: var(--ink); margin: 44px 0 18px; }
+  .article-page p { color: var(--ink-muted); margin: 0 0 20px; line-height: 1.7; }
+  .end-mark { text-align: center; color: var(--gold); margin: 50px 0 10px; font-size: 1.2rem; }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 100 65.5" aria-hidden="true"><polygon points="6.0,46.6 19.7,17.6 57.5,6.0 94.0,37.1 79.9,57.0 45.8,59.5" fill="none" stroke="#4A90D9" stroke-width="5" stroke-linejoin="round"/></svg>
+      The Hexagon
+    </a>
+    <button class="navtoggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <div class="navlinks" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#why">Why I Write</a>
+      <a href="#articles">Articles &amp; Views</a>
+    </div>
+  </div>
+</nav>
+
+<div id="view-home">
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">A VIEW FROM THE EDGES OF EUROPE</p>
+    <h1 class="title">The Hexagon</h1>
+    <p class="tagline">Six points, one continent. Notes on the states that sit at Europe's borders — where accession, security and identity are still being decided.</p>
+
+    <div class="diagram-stage">
+      <svg viewBox="0 0 600 440" role="img" aria-label="An irregular hexagon whose six corners sit at points on the edge of Europe, placed as they would appear on a map">
+        <defs>
+          <radialGradient id="hexGradient" cx="50%" cy="50%" r="65%">
+            <stop offset="0%" stop-color="#1C3D5A" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#070A10" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <polygon class="hex-fill" points="60.0,295.5 134.6,137.5 341.0,74.0 540.0,243.6 463.0,352.1 277.3,366.0"/>
+        <polygon class="hex-outline" points="60.0,295.5 134.6,137.5 341.0,74.0 540.0,243.6 463.0,352.1 277.3,366.0" stroke-linejoin="round"/>
+        <circle class="vx-dot active" cx="60.0" cy="295.5" r="6"/>
+        <circle class="vx-dot active" cx="134.6" cy="137.5" r="6"/>
+        <circle class="vx-dot active" cx="341.0" cy="74.0" r="6"/>
+        <circle class="vx-dot active" cx="540.0" cy="243.6" r="6"/>
+        <circle class="vx-dot active" cx="463.0" cy="352.1" r="6"/>
+        <circle class="vx-dot active" cx="277.3" cy="366.0" r="6"/>
+      </svg>
+      <p class="diagram-caption">Six points, drawn where they sit in Europe: the edge of the continent, not its centre.</p>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap section-head">
+    <p class="section-label">01 — ABOUT</p>
+    <div class="section-body">
+      <h2>Who I am</h2>
+      <div class="prose">
+        <p>I'm <strong>Georgios</strong>, an MSc candidate in Defence, Development and Diplomacy at Durham University's School of Government and International Affairs. My focus is post-conflict reconstruction, minority rights and the frozen conflicts that continue to shape Europe's edges — Cyprus chief among them, given where I grew up.</p>
+        <p>I hold a BA in History and Archaeology from the University of Cyprus, and studied for a term at the National and Kapodistrian University of Athens. My dissertation examines the unresolved Serbia–Kosovo dispute through the lens of nationalism and ripeness theory — the same framework I bring to bear on the other borderline cases this site follows.</p>
+        <p>Here I am posting my views regarding the European periphery, from EU enlargement to frozen conflicts, in my own voice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap section-head">
+    <p class="section-label">02 — WHY I WRITE</p>
+    <div class="section-body">
+      <h2>Why the hexagon</h2>
+      <div class="prose">
+        <p>Most commentary on "Europe" is written from its centre — Brussels, Berlin, Paris. This site starts instead from six points on its perimeter. Traced clockwise, they form a rough hexagon around the continent's actual edge.</p>
+        <p>Among them are places where EU membership is still being negotiated, where security guarantees are still contested, and where the questions the centre considers settled — borders, identity, alliance — are still live. The periphery remains a significant geographical position which impacts the centre, and it affects decision-making in the centre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="articles">
+  <div class="wrap section-head">
+    <p class="section-label">03 — ARTICLES &amp; VIEWS</p>
+    <div class="section-body">
+      <h2>Published</h2>
+      <div class="article-list">
+
+        <div class="article-row">
+          <div>
+            <p class="article-title"><a href="https://moderndiplomacy.eu/2026/07/16/how-the-cyprus-question-continues-to-shape-eu-turkey-security-cooperation/" target="_blank" rel="noopener">How the Cyprus Question Continues to Shape EU-Turkey Security Cooperation</a></p>
+            <p class="article-dek">Why Cyprus and Greece remain able to constrain Turkey's place in EU defence initiatives, even as Brussels and Ankara draw closer.</p>
+            <span class="status-pill live">MODERN DIPLOMACY · 16 JUL 2026</span>
+          </div>
+          <div class="article-meta">Cyprus</div>
+        </div>
+
+        <div class="article-row">
+          <div>
+            <p class="article-title"><a href="#article-cyprus-defence">Defence Equipment in Cyprus Amid the Resumption of Talks</a></p>
+            <p class="article-dek">Why both sides of the Cyprus divide are rearming even as UN-led negotiations resume — and what that parallel actually signals about the state's readiness.</p>
+            <span class="status-pill live">THE HEXAGON · OCT 2026</span>
+          </div>
+          <div class="article-meta">Cyprus</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 The Hexagon</span>
+    <div class="flinks">
+      <a href="#top">Back to top</a>
+      <a href="mailto:georgios.hexagon@protonmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /view-home -->
+
+<div id="view-article-cyprus-defence" style="display:none;">
+  <article class="article-page">
+    <div class="wrap article-wrap">
+      <a href="#articles" class="back-link">&larr; All articles</a>
+      <p class="kicker">CYPRUS &middot; VIEWS</p>
+      <h1 class="article-h1">Defence Equipment in Cyprus Amid the Resumption of Talks</h1>
+      <div class="article-pagemeta">
+        <span>THE HEXAGON</span>
+        <span>OCTOBER 2026</span>
+        <span>~860 WORDS</span>
+      </div>
+
+      <p class="lede">Both sides of the Cyprus divide are rearming even as UN-led talks resume — a parallel that may say more about the state of the negotiations than either side's public statements do.</p>
+
+      <p>The current conditions in Cyprus expose a parallel situation between two different approaches. The current environment on the island is not a paradox but a realistic result of what is actually happening in Cyprus. Both political entities in Cyprus are arming themselves amid ongoing UN-led reunification talks, which started last <a href="https://www.reuters.com/world/middle-east/un-chief-guterres-sounds-out-cyprus-sides-prospects-peace-talks-2026-07-28/" target="_blank" rel="noopener">July</a>.</p>
+
+      <p>However, arming themselves is not an alternative in the event of a potential failure of the 'talks', but rather the result of a continuing fragile environment in the Middle East. And this can be confirmed by the different approaches that the two political entities are currently undertaking. Still, the arming amid the efforts to resume talks might explain certain realities about where the negotiations actually stand, although this is not an absolute prediction.</p>
+
+      <h2>Defending arms on the island</h2>
+
+      <p>The Republic of Cyprus continues an arms-oriented cooperation with its neighbourhood states and its guarantor, Greece. Recently, Cyprus bought defensive systems from Israel to build its own defensive dome (including the Barak defence system). This is to reinforce the Republic's air-defence system. In Paphos, the western city of Cyprus, the Greek F-16s (four in number) and one <a href="https://www.tovima.com/politics/greece-keeps-f-16-jets-and-frigate-in-cyprus-indefinitely/" target="_blank" rel="noopener">frigate</a>, which is equipped with an anti-drone system, have been there since last March, when a hostile drone attacked a British <a href="https://www.politico.eu/article/greece-warship-fighter-jet-cyprus-drone-strike/" target="_blank" rel="noopener">base</a> in Akrotiri, Cyprus.</p>
+
+      <p>The newly approved 2027 state budget signifies a surge in defence expenditures for Cyprus, with funding forecast to reach €300 million, aligning with EU guidelines aimed at strengthening member states' defence budgets amid regional insecurity. This is part of a greater movement towards defence enhancement.</p>
+
+      <p>In addition, Cyprus participates in the annual multinational military exercise 'Medusa,' held this year with Greece and Egypt, alongside France and Italy, demonstrating their regional <a href="https://www.ekathimerini.com/politics/foreign-policy/1315754/greece-cyprus-egypt-test-war-readiness/" target="_blank" rel="noopener">readiness</a>.</p>
+
+      <p>Besides that, Egyptian armed forces participated in the <a href="https://greekcitytimes.com/2026/10/01/cyprus-independence-day-parade-f16-barak-mx/" target="_blank" rel="noopener">independence parade</a> in Cyprus in October, alongside French, American and British forces, with the unveiling of the Barak system, while Greek F-16s flew above the Cypriot capital.</p>
+
+      <p>This demonstrates the movement of the Republic of Cyprus towards strategic cooperation, investing in its own defence through partnerships with its neighbouring states, even as talks toward a political settlement remain formally ongoing.</p>
+
+      <p>On the other hand, Turkey follows a similar pattern regarding the defence of its own entity on the island. The 40,000 Turkish troops remain in the north, undermining the territorial integrity of the Republic of Cyprus. Also, <a href="https://en.philenews.com/politics/turkey-military-footprint-occupied-cyprus-regional-tensions/" target="_blank" rel="noopener">Turkish</a> military aeroplanes continue to undertake <a href="https://cyprus-mail.com/2026/08/11/turkish-f-16-exercises-increase-over-cyprus-airspace" target="_blank" rel="noopener">exercises</a> frequently. Simultaneously, Republic of Cyprus officials have accused Turkish fighter jets of repeatedly violating the Nicosia FIR, creating insecurity in Cypriot <a href="https://en.philenews.com/local/cyprus-air-traffic-controllers-turkish-fir-near-miss/" target="_blank" rel="noopener">airspace</a>.</p>
+
+      <p>According to Philenews, an air base in occupied Cyprus is currently hosting unnamed aircraft and drones, while it is being upgraded in order to be capable of hosting fighters. This comes to reinforce the pre-existing presence of six Turkish F-16s in the northern part of the island, along with anti-aircraft systems. This presence coincides with the Greek military presence in Paphos.</p>
+
+      <p>Furthermore, Turkey also raised concerns over the USA's decision to extend for one more year the lifting of restrictions on arms equipment in <a href="https://en.philenews.com/politics/turkey-warns-us-arms-sales-cyprus-sensitive-balances/" target="_blank" rel="noopener">Cyprus</a>, arguing that this decision may affect security and balance in Cyprus.</p>
+
+      <h2>Resumption of talks</h2>
+
+      <p>Simultaneously, this is happening amid the attempt to resume talks between the two communities of the island, led by the United Nations. In late September, President Christodoulides and Turkish Cypriot leader Tufan Erhürman met separately with UN officials in New York, rather than with each other directly. This followed their last meeting in Nicosia on <a href="https://cyprus-mail.com/2026/09/13/christodoulides-and-erhurman-set-for-final-meeting-before-un-assembly" target="_blank" rel="noopener">17 September</a>.</p>
+
+      <h2>What happened in New York?</h2>
+
+      <p>UN Secretary-General António Guterres and his Personal Envoy, María Ángela Holguín, held separate high-level bilateral discussions with Republic of Cyprus President Nikos Christodoulides and Turkish Cypriot leader Tufan Erhürman to review trust-building steps. The two sides then openly disputed what happened next: Christodoulides's camp said Erhürman had rejected a three-way meeting, a characterisation Erhürman later denied, saying the idea had never formally been on the agenda. Concurrently, Cyprus's Foreign Ministry lobbied international missions in New York to refrain from formal contacts with Turkish Cypriot representatives, further straining the atmosphere around the talks.</p>
+
+      <p>Official updates on these engagements are available via the <a href="https://www.gov.cy/en/president-of-the-republic-presidency/president-of-the-republic-of-cyprus-the-un-secretary-general-is-considering-a-trilateral-meeting-in-new-york/" target="_blank" rel="noopener">Public Information Office of the Republic of Cyprus</a> and the <a href="https://uncyprustalks.unmissions.org/en" target="_blank" rel="noopener">UN Cyprus Talks Official Platform</a>.</p>
+
+      <h2>Why is this a parallel?</h2>
+
+      <p>Since last August, new attempts at a negotiated settlement have started, and new rounds of talks have entered a new phase; however, without very 'optimistic <a href="https://en.philenews.com/politics/cyprus-talks-no-positive-sign-turkish-cypriots-august-26/" target="_blank" rel="noopener">results</a>'. In September, new meetings started again in New York, again amid ongoing disputes over the broader environment, since according to Guterres, the moment is not yet ripe for a five-party meeting between <a href="https://www.philenews.com/politiki/article/1772584/ti-leipei-ston-gouterres-gia-ne%CE%B1-di%CE%B5vrimeni-kypriako/" target="_blank" rel="noopener">stakeholders</a>.</p>
+
+      <p>Although we cannot be absolute, a ripe moment between the parties does not currently seem close. However, based on assumptions built upon a certain sector of arms, we can observe a parallel. Both parties are looking forward to enhancing their defence systems; simultaneously, they promote a resumption of negotiations. This parallel creates a collision with what both parties actually want to achieve. Theoretically, reinforcing your defence is in reverse of what the resumption of talks urges.</p>
+
+      <p>This can be interpreted differently, but my point of view is that the defensive enhancement translates to an unripe moment of resumption of talks between Greek-Cypriots and Turkish-Cypriots.</p>
+
+      <p class="end-mark">◇</p>
+    </div>
+  </article>
+</div><!-- /view-article-cyprus-defence -->
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Simple hash-based routing between the homepage and article views
+  const homeView = document.getElementById('view-home');
+  const articleViews = {
+    'article-cyprus-defence': document.getElementById('view-article-cyprus-defence')
+  };
+
+  function render() {
+    const hash = window.location.hash.replace('#', '');
+    if (articleViews[hash]) {
+      homeView.style.display = 'none';
+      Object.values(articleViews).forEach(v => v.style.display = 'none');
+      articleViews[hash].style.display = 'block';
+      window.scrollTo(0, 0);
+    } else {
+      homeView.style.display = 'block';
+      Object.values(articleViews).forEach(v => v.style.display = 'none');
+    }
+  }
+
+  window.addEventListener('hashchange', render);
+  render();
+</script>
+
+</body>
+</html>
